@@ -1,5 +1,6 @@
 THREE = require('three');
-var closestPairs = require('./');
+//var closestPairs = require('./');
+var closestPairs = require('./algorithm.js');
 var View = require('threejs-managed-view').View;
 
 var view = new View({
