@@ -1,6 +1,6 @@
 {
   "name": "threejs-pair-closest-points",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A module to help a cloud of points find the closest pairs in another cloud of points by rearranging 2 arrays of the same length.",
   "main": "index.js",
   "license": "MIT",
@@ -9,8 +9,7 @@
     "email": "tom@jam3.com",
     "url": "https://github.com/Jam3"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "threejs-managed-view": "^4.0.3",
     "three": "^0.71.0"
