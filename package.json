@@ -10,10 +10,10 @@
     "url": "https://github.com/Jam3"
   },
   "dependencies": {
-    "three": "^0.71.0"
   },
   "devDependencies": {
-    "threejs-managed-view": "^4.0.3"
+    "threejs-managed-view": "^4.0.3",
+    "three": "^0.71.0"
   },
   "scripts": {
     "test": "beefy test.js --live --open"
