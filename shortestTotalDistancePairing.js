@@ -31,7 +31,11 @@ function permutator(inputArr) {
 
 function pairClosestPoints(vertsA, vertsB) {
 
-	var allperms = permutator([0, 1, 2, 3, 4, 5]);
+	var baseArr = [];
+	for (var i = 0; i < vertsA.length; i++) {
+		baseArr.push(i);
+	};
+	var allperms = permutator(baseArr);
 	var alldistances = [];
 
 	for (var i = 0; i < allperms.length; i++)
@@ -44,7 +48,6 @@ function pairClosestPoints(vertsA, vertsB) {
 			distance += getDistance(vertsA[j], vertsB[perm[j]]);
 		}
 		
-		//alldistances.push({ distance: distance, index: i });
 		alldistances.push({ dist: distance, index: i });
 	}
 
@@ -63,15 +66,12 @@ function pairClosestPoints(vertsA, vertsB) {
 	for (var k = 0; k < lowestsoln.length; k++)
 	{
 		var newindex = lowestsoln[k];
-		newVertsB.push(vertsB[newindex]);
+		newVertsB.push(vertsB[newindex].clone());
 	}
 
 	// Copy newVertsB into vertsB
-	for (var k = 0; k < vertsB.length; k++)
-	{
-		vertsB[k].x = newVertsB[k].x;
-		vertsB[k].y = newVertsB[k].y;
-		vertsB[k].z = newVertsB[k].z;
+	for (var k = 0; k < vertsB.length; k++) {
+		vertsB[k].copy(newVertsB[k]);
 	}
 }
 

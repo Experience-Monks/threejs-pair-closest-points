@@ -1,6 +1,6 @@
 THREE = require('three');
-//var closestPairs = require('./');
-var closestPairs = require('./algorithm.js');
+var closestPairs = require('./');
+// var closestPairs = require('./shortestTotalDistancePairing.js');
 var View = require('threejs-managed-view').View;
 
 var view = new View({
@@ -17,18 +17,20 @@ var boundSize = 5;
 
 var boundMatrixA = new THREE.Matrix4();
 var randomVector = new THREE.Vector3(Math.random(), Math.random(), Math.random());
+var boundSizeA = 1;
+var boundSizeB = 4;
 randomVector.normalize().multiplyScalar(3);
 boundMatrixA.compose(
 	randomVector,
 	(new THREE.Quaternion()).setFromEuler(new THREE.Euler(0, 0, 0)),
-	new THREE.Vector3(3, 3, 3)
+	new THREE.Vector3(boundSizeA, boundSizeA, boundSizeA)
 );
 
 var boundMatrixB = new THREE.Matrix4();
 boundMatrixB.compose(
 	randomVector.clone().multiplyScalar(-1),
 	(new THREE.Quaternion()).setFromEuler(new THREE.Euler(0, 0, 0)),
-	new THREE.Vector3(3, 3, 3)
+	new THREE.Vector3(boundSizeB, boundSizeB, boundSizeB)
 );
 
 var datasA = [];
