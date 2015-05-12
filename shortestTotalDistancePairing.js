@@ -38,6 +38,20 @@ function pairClosestPoints(vertsA, vertsB) {
 	var allperms = permutator(baseArr);
 	var alldistances = [];
 
+	// Precompute all distance combinations from VertA to VertB first
+	var precomputedDistances = [];
+
+	for (var i = 0; i < vertsA.length; i++)
+	{
+		precomputedDistances.push([]);
+
+		for (var j = 0; j < vertsB.length; j++)
+		{
+			precomputedDistances[i][j] = getDistance(vertsA[i], vertsB[j]);
+		}
+	}
+	
+	// Use precomputed distances instead of computing every iteration
 	for (var i = 0; i < allperms.length; i++)
 	{
 		var perm = allperms[i];
@@ -45,7 +59,8 @@ function pairClosestPoints(vertsA, vertsB) {
 		var distance = 0;
 		for (var j = 0; j < vertsA.length; j++)
 		{
-			distance += getDistance(vertsA[j], vertsB[perm[j]]);
+			distance += precomputedDistances[j][perm[j]];
+			//getDistance(vertsA[j], vertsB[perm[j]]);
 		}
 		
 		alldistances.push({ dist: distance, index: i });
@@ -73,6 +88,7 @@ function pairClosestPoints(vertsA, vertsB) {
 	for (var k = 0; k < vertsB.length; k++) {
 		vertsB[k].copy(newVertsB[k]);
 	}
+
 }
 
 module.exports = pairClosestPoints;
